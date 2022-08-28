@@ -1,0 +1,1892 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Hydrogen Laravel Generator APIs",
+        "contact": {
+            "email": "amrmohamed257@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/carts": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "getCartList",
+                "description": "Get all Cart",
+                "operationId": "a0d1ec4f51fd5b981e8a4619e32a3fe9",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "carts": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Cart"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "createCart",
+                "description": "Create Cart",
+                "operationId": "12ef9e838deaacc8deb640aa4c08c508",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cart"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cart": {
+                                            "$ref": "#/components/schemas/Cart"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/carts/{id}": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "getCartItem",
+                "description": "Get Cart",
+                "operationId": "7bd9e3d21a0d450bf1ad7940e7f909cf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Cart",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cart": {
+                                            "$ref": "#/components/schemas/Cart"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "updateCart",
+                "description": "Update Cart",
+                "operationId": "59e1c6fe19a657d8bfcd2d7eddd4d214",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Cart",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cart"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cart": {
+                                            "$ref": "#/components/schemas/Cart"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "deleteCart",
+                "description": "Delete Cart",
+                "operationId": "fdeff13c06a1dc9b90c25dc79bc5fe4c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Cart",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/cart-items": {
+            "get": {
+                "tags": [
+                    "CartItem"
+                ],
+                "summary": "getCartItemList",
+                "description": "Get all CartItem",
+                "operationId": "e0966d2f12f049b35f99095c5fcc51bd",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cartItems": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/CartItem"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "CartItem"
+                ],
+                "summary": "createCartItem",
+                "description": "Create CartItem",
+                "operationId": "0594d84a244ba4a9806032ec59ba1298",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CartItem"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cartItem": {
+                                            "$ref": "#/components/schemas/CartItem"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/cart-items/{id}": {
+            "get": {
+                "tags": [
+                    "CartItem"
+                ],
+                "summary": "getCartItemItem",
+                "description": "Get CartItem",
+                "operationId": "3d3bd745d1de6ef57eff6a63987426f8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of CartItem",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cartItem": {
+                                            "$ref": "#/components/schemas/CartItem"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "CartItem"
+                ],
+                "summary": "updateCartItem",
+                "description": "Update CartItem",
+                "operationId": "ec4bd06028ad23246255ff6683face1f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of CartItem",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CartItem"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "cartItem": {
+                                            "$ref": "#/components/schemas/CartItem"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "CartItem"
+                ],
+                "summary": "deleteCartItem",
+                "description": "Delete CartItem",
+                "operationId": "2cf9e15188ff7329d3ffa06862da4f85",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of CartItem",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "getProductList",
+                "description": "Get all Product",
+                "operationId": "91b936a5b57fbb7216f68ad1fc9daf18",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Product"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "createProduct",
+                "description": "Create Product",
+                "operationId": "79e215d8d9a4d17cbaf7349cfc23fe47",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "product": {
+                                            "$ref": "#/components/schemas/Product"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "getProductItem",
+                "description": "Get Product",
+                "operationId": "4a6d8308917786c2dd65904010382848",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Product",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "product": {
+                                            "$ref": "#/components/schemas/Product"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "updateProduct",
+                "description": "Update Product",
+                "operationId": "d415a73334b78902bee5348f2d1adced",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Product",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "product": {
+                                            "$ref": "#/components/schemas/Product"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "deleteProduct",
+                "description": "Delete Product",
+                "operationId": "f994514c71102a885b0415915f712a3f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Product",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/stores": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "getStoreList",
+                "description": "Get all Store",
+                "operationId": "69c3cf1dcffef77a2ac5619b824d23da",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "stores": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Store"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "createStore",
+                "description": "Create Store",
+                "operationId": "185bb0f9896b223877d67f0e1a4e7689",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Store"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "store": {
+                                            "$ref": "#/components/schemas/Store"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/stores/{id}": {
+            "get": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "getStoreItem",
+                "description": "Get Store",
+                "operationId": "0ce4b7189453eba5486e0f1352fe0776",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Store",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "store": {
+                                            "$ref": "#/components/schemas/Store"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "updateStore",
+                "description": "Update Store",
+                "operationId": "47ae3974d562f31ae868bbedcab90e80",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Store",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Store"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "store": {
+                                            "$ref": "#/components/schemas/Store"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Store"
+                ],
+                "summary": "deleteStore",
+                "description": "Delete Store",
+                "operationId": "bd97d33a076dfadfe19e0a7d66dea079",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Store",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "Login",
+                "operationId": "b34158944224ae1cc422e355143f20d5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "firebase_token": {
+                                        "type": "string"
+                                    },
+                                    "platform": {
+                                        "description": "either IOS, Android",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string"
+                                        },
+                                        "expires_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "Login",
+                "operationId": "6417dd9ffa30b6df5f94b0b56e233742",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "firebase_token": {
+                                        "type": "string"
+                                    },
+                                    "platform": {
+                                        "description": "either IOS, Android",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string"
+                                        },
+                                        "expires_at": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid."
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "getUserList",
+                "description": "Get all User",
+                "operationId": "53277f841b08c414ced2240087e90a7a",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/User"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "createUser",
+                "description": "Create User",
+                "operationId": "56b8ac12a4aacf9a1e431a4fdec4c470",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "getUserItem",
+                "description": "Get User",
+                "operationId": "8d80a3d7e7363f68642910c2299d54ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of User",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "updateUser",
+                "description": "Update User",
+                "operationId": "ae2d40c8af1b0a03424a93272aafd3c1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of User",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "deleteUser",
+                "description": "Delete User",
+                "operationId": "9ce575786be845db36ed0d17000c234d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of User",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-devices": {
+            "get": {
+                "tags": [
+                    "UserDevice"
+                ],
+                "summary": "getUserDeviceList",
+                "description": "Get all UserDevice",
+                "operationId": "b2282cf26be1d81dee62ce7d16a2782d",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "userDevices": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/UserDevice"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "UserDevice"
+                ],
+                "summary": "createUserDevice",
+                "description": "Create UserDevice",
+                "operationId": "e2a8b57c6409806f9a95e0b267e38b50",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDevice"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "userDevice": {
+                                            "$ref": "#/components/schemas/UserDevice"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-devices/{id}": {
+            "get": {
+                "tags": [
+                    "UserDevice"
+                ],
+                "summary": "getUserDeviceItem",
+                "description": "Get UserDevice",
+                "operationId": "d34d05f1d5d65e699aa65cce8e2354a4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of UserDevice",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "userDevice": {
+                                            "$ref": "#/components/schemas/UserDevice"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "UserDevice"
+                ],
+                "summary": "updateUserDevice",
+                "description": "Update UserDevice",
+                "operationId": "3af6e69298af000a97794d8a1191733a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of UserDevice",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDevice"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "userDevice": {
+                                            "$ref": "#/components/schemas/UserDevice"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "UserDevice"
+                ],
+                "summary": "deleteUserDevice",
+                "description": "Delete UserDevice",
+                "operationId": "7c2b8599831b1f345a5020f2efa00db1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of UserDevice",
+                        "required": true,
+                        "schema": {
+                            "type": "{{ID_TYPE}}"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Cart": {
+                "required": [],
+                "properties": {
+                    "user_id": {
+                        "nullable": false,
+                        "description": "Owner id of the cart",
+                        "type": "integer",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "deleted_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "nullable": true,
+                        "schema": "Cart",
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "CartItem": {
+                "required": [],
+                "properties": {
+                    "cart_id": {
+                        "nullable": false,
+                        "description": "Cart id",
+                        "type": "integer",
+                        "readOnly": false
+                    },
+                    "product_id": {
+                        "nullable": false,
+                        "description": "Product id",
+                        "type": "integer",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "deleted_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "nullable": true,
+                        "schema": "CartItem",
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "required": [],
+                "properties": {
+                    "name": {
+                        "nullable": false,
+                        "description": "Name of the product",
+                        "properties": {
+                            "ar": {
+                                "nullable": false,
+                                "description": "Arabic Name of the product",
+                                "type": "string",
+                                "readOnly": false
+                            },
+                            "en": {
+                                "nullable": false,
+                                "description": "Arabic Name of the product",
+                                "type": "string",
+                                "readOnly": false
+                            }
+                        },
+                        "type": "object",
+                        "readOnly": false
+                    },
+                    "store_id": {
+                        "nullable": false,
+                        "description": "Store id",
+                        "type": "integer",
+                        "readOnly": false
+                    },
+                    "price": {
+                        "nullable": false,
+                        "description": "price of the product",
+                        "type": "number",
+                        "readOnly": false
+                    },
+                    "vat_included": {
+                        "nullable": false,
+                        "description": "is vat included in the price of the product",
+                        "type": "boolean",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "deleted_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "nullable": true,
+                        "schema": "Product",
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "Store": {
+                "required": [],
+                "properties": {
+                    "name": {
+                        "nullable": false,
+                        "description": "Name of the store",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "user_id": {
+                        "nullable": false,
+                        "description": "Owner id of the store",
+                        "type": "integer",
+                        "readOnly": false
+                    },
+                    "shipping_cost": {
+                        "nullable": true,
+                        "description": "Optional shipping cost",
+                        "type": "double",
+                        "readOnly": false
+                    },
+                    "vat_cost": {
+                        "nullable": true,
+                        "description": "Optional VAT on store product",
+                        "type": "double",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "deleted_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "nullable": true,
+                        "schema": "Store",
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "required": [],
+                "properties": {
+                    "name": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "email": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "updated_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            },
+            "UserDevice": {
+                "description": "App\\Module\\User\\Entities\\UserDevice.",
+                "required": [],
+                "properties": {
+                    "fcm_token": {
+                        "nullable": false,
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "type": {
+                        "nullable": false,
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "user_id": {
+                        "nullable": false,
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false
+                    },
+                    "created_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    },
+                    "deleted_at": {
+                        "nullable": true,
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

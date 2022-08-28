@@ -1,0 +1,270 @@
+{
+    "multi_tenant": false,
+    "mode": "app",
+    "generation_mode": "just-structure",
+    "translatale": true,
+    "generate_flutter_object": true,
+    "generate-react-object": true,
+    "blade_views": false,
+    "language_manger": false,
+    "languages": [
+        "en",
+        "ar"
+    ],
+    "spa": false,
+    "uuid": false,
+    "permissions": false,
+    "structure": {
+        "modules": [
+            {
+                "name": "Store",
+                "SCRUD": [
+                    {
+                        "name": "Store",
+                        "report": false,
+                        "likable": false,
+                        "commentable": false,
+                        "reviewable": false,
+                        "mediable": false,
+                        "batch_store": false,
+                        "batch_edit": false,
+                        "batch_delete": false,
+                        "change_state": false,
+                        "soft_delete": true,
+                        "nesting_type": "multi-step-tabs",
+                        "attributes": [
+                            {
+                                "name": "name",
+                                "type": "string",
+                                "comment": "Name of the store"
+                            },
+                            {
+                                "name": "user_id",
+                                "type": "unsignedInteger",
+                                "comment": "Owner id of the store",
+                                "relation": {
+                                    "model": "user",
+                                    "name_column": "name",
+                                    "value_column": "id"
+                                }
+                            },
+                            {
+                                "name": "shipping_cost",
+                                "type": "double",
+                                "comment": "Optional shipping cost",
+                                "nullable": true
+                            },
+                            {
+                                "name": "vat_cost",
+                                "type": "double",
+                                "comment": "Optional VAT on store product",
+                                "nullable": true
+                            }
+                        ],
+                        "relations": [
+                            {
+                                "model": "user",
+                                "relation": "belongsTo"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Product",
+                "SCRUD": [
+                    {
+                        "name": "Product",
+                        "report": false,
+                        "likable": false,
+                        "commentable": false,
+                        "reviewable": false,
+                        "mediable": false,
+                        "batch_store": false,
+                        "batch_edit": false,
+                        "batch_delete": false,
+                        "change_state": false,
+                        "soft_delete": true,
+                        "nesting_type": "multi-step-tabs",
+                        "attributes": [
+                            {
+                                "name": "name",
+                                "type": "json",
+                                "translatable": true,
+                                "comment": "Name of the product"
+                            },
+                            {
+                                "name": "store_id",
+                                "type": "unsignedInteger",
+                                "comment": "Store id",
+                                "relation": {
+                                    "model": "store",
+                                    "name_column": "name",
+                                    "value_column": "id"
+                                }
+                            },
+                            {
+                                "name": "price",
+                                "type": "double",
+                                "comment": "price of the product"
+                            },
+                            {
+                                "name": "vat_included",
+                                "type": "boolean",
+                                "comment": "is vat included in the price of the product",
+                                "default": 0
+                            }
+                        ],
+                        "relations": [
+                            {
+                                "model": "store",
+                                "relation": "belongsTo"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Cart",
+                "SCRUD": [
+                    {
+                        "name": "Cart",
+                        "report": false,
+                        "likable": false,
+                        "commentable": false,
+                        "reviewable": false,
+                        "mediable": false,
+                        "batch_store": false,
+                        "batch_edit": false,
+                        "batch_delete": false,
+                        "change_state": false,
+                        "soft_delete": true,
+                        "nesting_type": "multi-step-tabs",
+                        "attributes": [
+                            {
+                                "name": "user_id",
+                                "type": "unsignedInteger",
+                                "comment": "Owner id of the cart",
+                                "relation": {
+                                    "model": "user",
+                                    "name_column": "name",
+                                    "value_column": "id"
+                                }
+                            }
+                        ],
+                        "relations": [
+                            {
+                                "model": "user",
+                                "relation": "belongsTo"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Cart Item",
+                        "report": false,
+                        "likable": false,
+                        "commentable": false,
+                        "reviewable": false,
+                        "mediable": false,
+                        "batch_store": false,
+                        "batch_edit": false,
+                        "batch_delete": false,
+                        "change_state": false,
+                        "soft_delete": true,
+                        "nesting_type": "multi-step-tabs",
+                        "attributes": [
+                            {
+                                "name": "cart_id",
+                                "type": "unsignedInteger",
+                                "comment": "Cart id",
+                                "relation": {
+                                    "model": "cart",
+                                    "name_column": "id",
+                                    "value_column": "id"
+                                }
+                            },
+                            {
+                                "name": "product_id",
+                                "type": "unsignedInteger",
+                                "comment": "Product id",
+                                "relation": {
+                                    "model": "product",
+                                    "name_column": "name",
+                                    "value_column": "id"
+                                }
+                            }
+                        ],
+                        "relations": [
+                            {
+                                "model": "cart",
+                                "relation": "belongsTo"
+                            },
+                            {
+                                "model": "product",
+                                "relation": "belongsTo"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "User",
+                "SCRUD": [
+                    {
+                        "name": "User Device",
+                        "report": true,
+                        "likable": false,
+                        "commentable": false,
+                        "reviewable": false,
+                        "mediable": false,
+                        "batch_store": false,
+                        "batch_edit": false,
+                        "batch_delete": false,
+                        "change_state": false,
+                        "soft_delete": false,
+                        "nesting_type": "multi-step-tabs",
+                        "attributes": [
+                            {
+                                "name": "fcm_token",
+                                "type": "text"
+                            },
+                            {
+                                "name": "type",
+                                "type": "enum",
+                                "options": [
+                                    {
+                                        "name": "IOS",
+                                        "value": "ios"
+                                    },
+                                    {
+                                        "name": "Android",
+                                        "value": "android"
+                                    },
+                                    {
+                                        "name": "Web",
+                                        "value": "web"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "user_id",
+                                "type": "uuid",
+                                "relation": {
+                                    "model": "user",
+                                    "name_column": "name",
+                                    "value_column": "id"
+                                }
+                            }
+                        ],
+                        "relations": [
+                            {
+                                "model": "user",
+                                "relation": "belongsTo"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

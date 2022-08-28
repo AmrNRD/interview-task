@@ -1,0 +1,182 @@
+[
+    {
+        "name": "stores",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "stores.index",
+        "children": [
+            {
+                "name": "list stores",
+                "route": "stores.index"
+            },
+            {
+                "name": "create new Store",
+                "route": "stores.create"
+            }
+        ]
+    },
+    {
+        "name": "stores",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "stores.index",
+        "children": [
+            {
+                "name": "list stores",
+                "route": "stores.index"
+            },
+            {
+                "name": "create new Store",
+                "route": "stores.create"
+            }
+        ]
+    },
+    {
+        "name": "stores",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "stores.index",
+        "children": [
+            {
+                "name": "list stores",
+                "route": "stores.index"
+            },
+            {
+                "name": "create new Store",
+                "route": "stores.create"
+            }
+        ]
+    },
+    {
+        "name": "products",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "products.index",
+        "children": [
+            {
+                "name": "list products",
+                "route": "products.index"
+            },
+            {
+                "name": "create new Product",
+                "route": "products.create"
+            }
+        ]
+    },
+    {
+        "name": "carts",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "carts.index",
+        "children": [
+            {
+                "name": "list carts",
+                "route": "carts.index"
+            },
+            {
+                "name": "create new Cart",
+                "route": "carts.create"
+            }
+        ]
+    },
+    {
+        "name": "cart-items",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "cart-items.index",
+        "children": [
+            {
+                "name": "list cart-items",
+                "route": "cart-items.index"
+            },
+            {
+                "name": "create new CartItem",
+                "route": "cart-items.create"
+            }
+        ]
+    },
+    {
+        "name": "user-devices",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "user-devices.index",
+        "children": [
+            {
+                "name": "list user-devices",
+                "route": "user-devices.index"
+            },
+            {
+                "name": "create new UserDevice",
+                "route": "user-devices.create"
+            }
+        ]
+    },
+    {
+        "name": "stores",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "stores.index",
+        "children": [
+            {
+                "name": "list stores",
+                "route": "stores.index"
+            },
+            {
+                "name": "create new Store",
+                "route": "stores.create"
+            }
+        ]
+    },
+    {
+        "name": "products",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "products.index",
+        "children": [
+            {
+                "name": "list products",
+                "route": "products.index"
+            },
+            {
+                "name": "create new Product",
+                "route": "products.create"
+            }
+        ]
+    },
+    {
+        "name": "carts",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "carts.index",
+        "children": [
+            {
+                "name": "list carts",
+                "route": "carts.index"
+            },
+            {
+                "name": "create new Cart",
+                "route": "carts.create"
+            }
+        ]
+    },
+    {
+        "name": "cart-items",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "cart-items.index",
+        "children": [
+            {
+                "name": "list cart-items",
+                "route": "cart-items.index"
+            },
+            {
+                "name": "create new CartItem",
+                "route": "cart-items.create"
+            }
+        ]
+    },
+    {
+        "name": "user-devices",
+        "icon": "nav-icon fas fa-tachometer-alt",
+        "route": "user-devices.index",
+        "children": [
+            {
+                "name": "list user-devices",
+                "route": "user-devices.index"
+            },
+            {
+                "name": "create new UserDevice",
+                "route": "user-devices.create"
+            }
+        ]
+    }
+]
