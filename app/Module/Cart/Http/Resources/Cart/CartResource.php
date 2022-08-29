@@ -2,6 +2,8 @@
 
 namespace App\Module\Cart\Http\Resources\Cart;
 
+use App\Module\Cart\Entities\CartItem;
+use App\Module\Cart\Http\Resources\CartItem\CartItemResource;
 use Illuminate\Http\Request;
 use App\Infrastructure\Http\AbstractResources\BaseResource as JsonResource;
 use App\Module\User\Http\Resources\User\UserResource;;
@@ -25,6 +27,7 @@ class CartResource extends JsonResource
             'sub_total'  =>  $this->sub_total,
             'total'  =>  $this->total,
             'user'  =>  $this->when($this->relationLoaded('user'),function (){ return new UserResource($this->user);}),
+            'items'  =>  $this->when($this->relationLoaded('cartItems'),function (){ return CartItemResource::collection($this->cartItems);}),
         ];
     }
 }

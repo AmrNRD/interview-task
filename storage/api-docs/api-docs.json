@@ -1785,9 +1785,15 @@
                         "type": "number",
                         "readOnly": false
                     },
-                    "vat_percentage": {
+                    "vat": {
                         "nullable": true,
                         "description": "Optional VAT on store product",
+                        "type": "number",
+                        "readOnly": false
+                    },
+                    "vat_type": {
+                        "nullable": true,
+                        "description": "Either percentage or value",
                         "type": "number",
                         "readOnly": false
                     },

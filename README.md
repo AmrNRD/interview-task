@@ -34,9 +34,17 @@ same prices.
 
 #### Steps to list the cart
 
+    - Run in your terminal
+        $ composer install
+        $ php artisan key:generate
+        $ php artisan migrate
+        $ php artisan passport:install
+    
     -  Signup new user
+    
     -  Create new store 
-        - if vat_percentage is null then the there will not be vat added to the products.
+        - if vat is null then the there will not be vat added to the products.
+        - if vat_type is percentage (default) it will calualted as percentage of product price else it will be just added to the price of the product.
         - if shipping_cost is null then the there will not be shipping cost will be free.
         - by default user_id is Authed user id.
     -  Create new product 

@@ -19,8 +19,8 @@ class StoreFactory extends Factory
 		'name'=>$this->faker->name,
 		'user_id'=> factory(User::class)->create()->id,
 		'shipping_cost'=>$this->faker->randomFloat(5),
-		'vat_percentage'=>$this->faker->randomFloat(5),
-
+		'vat'=>$this->faker->randomFloat(5),
+        'vat_type'=> 'percentage',
         ];
     }
 

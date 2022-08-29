@@ -95,7 +95,7 @@ use Spatie\Translatable\HasTranslations;
  * @property array $name
  * @property int $store_id
  * @property float $price
- * @property float $vat_percentage
+ * @property float $vat
  * @property float $shipping_cost
  * @property boolean $vat_included
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -230,9 +230,9 @@ class Product extends Model
     //</editor-fold>
 
     //<editor-fold desc="Product Attributes" defaultstate="collapsed">
-    public function getVatPercentageAttribute()
+    public function getVatAttribute()
     {
-        return $this->vat_included?0:$this->store->vat_percentage??0;
+        return $this->vat_included&&$this->store->vat?0:$this->store->vat??0;
     }
     public function getShippingCostAttribute()
     {

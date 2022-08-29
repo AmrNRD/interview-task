@@ -17,12 +17,13 @@ class StoreResource extends JsonResource
     public function data(Request $request):array
     {
         return [
-            
+
 			'id'  =>  $this->id,
 			'name'  =>  $this->name,
 			'user_id'  =>  $this->user_id,
 			'shipping_cost'  =>  $this->shipping_cost,
-			'vat_cost'  =>  $this->vat_cost,
+			'vat'  =>  $this->vat,
+			'vat_type'  =>  $this->vat_type,
 			'user'  =>  $this->when($this->relationLoaded('user'),function (){ return new UserResource($this->user);}),
         ];
     }

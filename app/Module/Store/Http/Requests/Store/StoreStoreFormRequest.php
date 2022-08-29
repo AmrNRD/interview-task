@@ -29,7 +29,8 @@ class StoreStoreFormRequest extends FormRequest
 			'name'  =>  'required|string|max:255',
 			'user_id'  =>  'required|numeric|exists:users,id',
 			'shipping_cost'  =>  'nullable|numeric',
-			'vat_percentage'  =>  'nullable|numeric',
+			'vat'  =>  'nullable|numeric',
+			'vat_type'  =>  'nullable|string|in:percentage,value',
         ];
         return $rules;
     }
@@ -38,6 +39,7 @@ class StoreStoreFormRequest extends FormRequest
     {
         return [
             'user_id'  => Auth::id(),
+            'vat_type' => 'percentage'
         ];
     }
 

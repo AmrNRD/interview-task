@@ -43,13 +43,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="number",
  *      ),
  *      @OA\Property(
- *          property="vat_percentage",
+ *          property="vat",
  *          description="Optional VAT on store product",
  *          readOnly=false,
  *          nullable=true,
  *          type="number",
  *      ),
-
+ *      @OA\Property(
+ *          property="vat_type",
+ *          description="Either percentage or value",
+ *          readOnly=false,
+ *          nullable=true,
+ *          type="number",
+ *      ),
  *      @OA\Property(
  *          property="created_at",
  *          description="",
@@ -80,7 +86,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $name
  * @property int $user_id
  * @property float|null $shipping_cost
- * @property float|null $vat_percentage
+ * @property float|null $vat
+ * @property string $vat_type
  * @property \Illuminate\Support\Carbon|null $deleted_at
 
  * @property-read User|null $user
@@ -170,7 +177,8 @@ class Store extends Model
         'name',
         'user_id',
         'shipping_cost',
-        'vat_percentage'
+        'vat',
+        'vat_type'
     ];
 
     public static $allowedFilersExact= [

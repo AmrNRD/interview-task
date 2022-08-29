@@ -213,7 +213,7 @@ class CartItem extends Model
     //<editor-fold desc="CartItem Attributes" defaultstate="collapsed">
     public function getVatAttribute()
     {
-        return (($this->product->vat_percentage*$this->product->price)*$this->quantity)/100;
+        return $this->product->vat?($this->product->store->vat_type=="percentage"?((($this->product->vat*$this->product->price)*$this->quantity)/100):$this->product->vat):0;
     }
     public function getSubTotalAttribute()
     {
