@@ -36,7 +36,6 @@ class CartItemStoreFormRequest extends FormRequest
     protected function defaults()
     {
         return [
-            'user_id'  => Auth::id(),
             'quantity' => 1
         ];
     }

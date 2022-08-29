@@ -51,7 +51,7 @@ class ProductController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/products",
+     *      path="/products?include=store",
      *      summary="getProductList",
      *      tags={"Product"},
      *      description="Get all Product",

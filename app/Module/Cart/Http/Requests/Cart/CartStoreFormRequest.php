@@ -3,6 +3,7 @@
 namespace App\Module\Cart\Http\Requests\Cart;
 
 use App\Infrastructure\Http\AbstractRequests\BaseRequest as FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CartStoreFormRequest extends FormRequest
 {
@@ -24,11 +25,17 @@ class CartStoreFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            
+
 			'user_id'  =>  'required|numeric|exists:users,id',
         ];
         return $rules;
     }
 
+    protected function defaults()
+    {
+        return [
+            'user_id'  => Auth::id()
+        ];
+    }
 
 }

@@ -13,14 +13,14 @@
         }
     ],
     "paths": {
-        "/carts": {
+        "/carts?include=user&cartItems": {
             "get": {
                 "tags": [
                     "Cart"
                 ],
                 "summary": "getCartList",
                 "description": "Get all Cart",
-                "operationId": "a0d1ec4f51fd5b981e8a4619e32a3fe9",
+                "operationId": "0aa1ca6d616a34dc2baae785218e01f5",
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -52,7 +52,9 @@
                         "bearerAuth": []
                     }
                 ]
-            },
+            }
+        },
+        "/carts": {
             "post": {
                 "tags": [
                     "Cart"
@@ -250,14 +252,14 @@
                 ]
             }
         },
-        "/cart-items": {
+        "/cart-items?include=cart,product": {
             "get": {
                 "tags": [
                     "CartItem"
                 ],
                 "summary": "getCartItemList",
                 "description": "Get all CartItem",
-                "operationId": "e0966d2f12f049b35f99095c5fcc51bd",
+                "operationId": "02abe30b799e0053531eb35496cfe30c",
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -289,7 +291,9 @@
                         "bearerAuth": []
                     }
                 ]
-            },
+            }
+        },
+        "/cart-items": {
             "post": {
                 "tags": [
                     "CartItem"
@@ -487,14 +491,14 @@
                 ]
             }
         },
-        "/products": {
+        "/products?include=store": {
             "get": {
                 "tags": [
                     "Product"
                 ],
                 "summary": "getProductList",
                 "description": "Get all Product",
-                "operationId": "91b936a5b57fbb7216f68ad1fc9daf18",
+                "operationId": "35928ba343ed604b25b0c7906649f15f",
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -526,7 +530,9 @@
                         "bearerAuth": []
                     }
                 ]
-            },
+            }
+        },
+        "/products": {
             "post": {
                 "tags": [
                     "Product"
@@ -1661,6 +1667,12 @@
                         "type": "integer",
                         "readOnly": false
                     },
+                    "quantity": {
+                        "nullable": false,
+                        "description": "Quantity of items",
+                        "type": "integer",
+                        "readOnly": false
+                    },
                     "created_at": {
                         "nullable": true,
                         "description": "",
@@ -1770,13 +1782,13 @@
                     "shipping_cost": {
                         "nullable": true,
                         "description": "Optional shipping cost",
-                        "type": "double",
+                        "type": "number",
                         "readOnly": false
                     },
-                    "vat_cost": {
+                    "vat_percentage": {
                         "nullable": true,
                         "description": "Optional VAT on store product",
-                        "type": "double",
+                        "type": "number",
                         "readOnly": false
                     },
                     "created_at": {

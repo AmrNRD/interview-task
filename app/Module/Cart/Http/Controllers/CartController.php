@@ -51,7 +51,7 @@ class CartController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/carts",
+     *      path="/carts?include=user&cartItems",
      *      summary="getCartList",
      *      tags={"Cart"},
      *      description="Get all Cart",

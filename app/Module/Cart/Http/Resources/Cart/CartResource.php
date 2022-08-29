@@ -17,10 +17,14 @@ class CartResource extends JsonResource
     public function data(Request $request):array
     {
         return [
-            
-			'id'  =>  $this->id,
-			'user_id'  =>  $this->user_id,
-			'user'  =>  $this->when($this->relationLoaded('user'),function (){ return new UserResource($this->user);}),
+
+            'id'  =>  $this->id,
+            'user_id'  =>  $this->user_id,
+            'vat'  =>  $this->vat,
+            'shipping'  =>  $this->shipping,
+            'sub_total'  =>  $this->sub_total,
+            'total'  =>  $this->total,
+            'user'  =>  $this->when($this->relationLoaded('user'),function (){ return new UserResource($this->user);}),
         ];
     }
 }
