@@ -16,6 +16,14 @@ class BaseRequest extends Request
         return false;
     }
 
+    protected function prepareForValidation(){
+        if( method_exists( $this, 'defaults' ) ) {
+            foreach ($this->defaults() as $key => $defaultValue) {
+                if (!$this->has($key)) $this->merge([$key => $defaultValue]);
+            }
+        }
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

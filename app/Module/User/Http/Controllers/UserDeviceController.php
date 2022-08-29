@@ -47,7 +47,6 @@ class UserDeviceController extends Controller
     protected $moduleAlias = 'Users';
 
     public function __construct(){
-     $this->authorizeResource(UserDevice::class, "user_device");
     }
 
     /**

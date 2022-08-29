@@ -47,7 +47,6 @@ class CartController extends Controller
     protected $moduleAlias = 'Carts';
 
     public function __construct(){
-     $this->authorizeResource(Cart::class, "cart");
     }
 
     /**

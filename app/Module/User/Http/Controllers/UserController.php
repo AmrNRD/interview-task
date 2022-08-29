@@ -46,7 +46,6 @@ class UserController extends Controller
     protected $moduleAlias = 'Users';
 
     public function __construct(){
-     $this->authorizeResource(User::class, "user");
     }
 
     /**

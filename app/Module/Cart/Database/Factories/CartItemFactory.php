@@ -19,6 +19,7 @@ class CartItemFactory extends Factory
         return [
 		'cart_id'=> factory(Cart::class)->create()->id,
 		'product_id'=> factory(Product::class)->create()->id,
+        'quantity'=>$this->faker->randomNumber(5),
 
         ];
     }

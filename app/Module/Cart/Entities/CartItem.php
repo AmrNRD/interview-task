@@ -3,6 +3,7 @@
 namespace App\Module\Cart\Entities;
 
 use App\Infrastructure\AbstractModels\BaseModel as Model;
+use App\Module\Cart\Entities\Cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Module\Cart\Database\Factories\CartItemFactory;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -17,8 +18,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
-    * App\Module\Cart\Entities\CartItem.
-    *
+ * App\Module\Cart\Entities\CartItem.
+ *
  * @OA\Schema(
  *      schema="CartItem",
  *      required={},
@@ -54,7 +55,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="date-time"
  *      )
  * ),
-*      @OA\Property(
+ *      @OA\Property(
  *          property="updated_at",
  *          description="",
  *          readOnly=true,
@@ -63,31 +64,32 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="date-time"
  *      )
  * ))
-	* @property int id
-	* @property int $cart_id
-	* @property int $product_id
-	* @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int id
+ * @property int $cart_id
+ * @property int $product_id
+ * @property int $quantity
+ * @property \Illuminate\Support\Carbon|null $deleted_at
 
-	* @property-read Cart|null $cart
-	* @property-read Product|null $product
+ * @property-read Cart|null $cart
+ * @property-read Product|null $product
 
 
-    * @property \Illuminate\Support\Carbon $created_at
-    * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
 
-    * @method static \App\Module\Cart\Database\Factories\CartItemFactory factory(...$parameters)
+ * @method static \App\Module\Cart\Database\Factories\CartItemFactory factory(...$parameters)
 
-    * @method static CartItem|null find(integer $id = null)
-    * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
-    * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
-    * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
+ * @method static CartItem|null find(integer $id = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
 
-    * @method static \Illuminate\Database\Query\Builder|CartItem onlyTrashed()
-    * @method static \Illuminate\Database\Query\Builder|CartItem withTrashed()
-    * @method static \Illuminate\Database\Query\Builder|CartItem withoutTrashed()
-    * @mixin \Eloquent
-    */
-class CartItem extends Model 
+ * @method static \Illuminate\Database\Query\Builder|CartItem onlyTrashed()
+ * @method static \Illuminate\Database\Query\Builder|CartItem withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|CartItem withoutTrashed()
+ * @mixin \Eloquent
+ */
+class CartItem extends Model
 {
     use HasFactory,SoftDeletes;
     /**
@@ -129,8 +131,9 @@ class CartItem extends Model
      * @var array
      */
     protected $fillable = [
-    'cart_id',
-	'product_id'
+        'cart_id',
+        'product_id',
+        'quantity'
     ];
 
     /**
@@ -139,35 +142,35 @@ class CartItem extends Model
      * @var array
      */
     protected $casts = [
-    	'cart_id' =>'integer',
-	'product_id' =>'integer',
+        'cart_id' =>'integer',
+        'product_id' =>'integer',
 
     ];
 
 
     public $translatable = [
-    
+
     ];
 
     public static $allowedFilters = [
-    'cart_id',
-	'product_id'
+        'cart_id',
+        'product_id'
     ];
 
     public static $allowedFilersExact= [
-    'id',
+        'id',
     ];
 
     public static $allowedFilersScope= [
-    'date_starts_before',
-    'date_ends_before',
-    'date_in_between',
-    'by_date',
+        'date_starts_before',
+        'date_ends_before',
+        'date_in_between',
+        'by_date',
     ];
 
     public static $includes = [
-    'cart',
-	'product'
+        'cart',
+        'product'
     ];
 
     /**
@@ -177,23 +180,24 @@ class CartItem extends Model
      */
     protected $table = "cart_items";
 
-   /**
-    * Create a new factory instance for the model.
-    *
-    * @return \Illuminate\Database\Eloquent\Factories\Factory
-    */
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
     protected static function newFactory(){
-       return CartItemFactory::new();
+        return CartItemFactory::new();
     }
 
-	//<editor-fold desc="CartItem Relations" defaultstate="collapsed">
-	public function cart():BelongsTo
-	{
-		return $this->belongsTo(Cart::class);
-	}
-	public function product():BelongsTo
-	{
-		return $this->belongsTo(Product::class);
-	}
-	//</editor-fold>
+    //<editor-fold desc="CartItem Relations" defaultstate="collapsed">
+    public function cart():BelongsTo
+    {
+        return $this->belongsTo(Cart::class);
+    }
+    public function product():BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+    //</editor-fold>
+
 }

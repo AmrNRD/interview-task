@@ -47,7 +47,6 @@ class StoreController extends Controller
     protected $moduleAlias = 'Stores';
 
     public function __construct(){
-     $this->authorizeResource(Store::class, "store");
     }
 
     /**

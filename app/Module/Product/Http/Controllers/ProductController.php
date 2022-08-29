@@ -47,7 +47,6 @@ class ProductController extends Controller
     protected $moduleAlias = 'Products';
 
     public function __construct(){
-//     $this->authorizeResource(Product::class, "product");
     }
 
     /**

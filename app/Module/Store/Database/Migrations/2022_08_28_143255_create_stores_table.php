@@ -14,19 +14,19 @@ class CreateStoresTable extends Migration
     public function up()
     {
         Schema::create('stores', function (Blueprint $table) {
-            
+
 
 			$table->id();
 			$table->string('name')->comment('Name of the store');
 			$table->unsignedInteger('user_id')->comment('Owner id of the store');
 			$table->double('shipping_cost')->nullable()->comment('Optional shipping cost');
-			$table->double('vat_cost')->nullable()->comment('Optional VAT on store product');
+            $table->double('vat_percentage')->nullable()->comment('Optional VAT percentage on store product');
 			$table->timestamps();
 
 			$table->softDeletes();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *

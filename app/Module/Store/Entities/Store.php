@@ -16,8 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 /**
-    * App\Module\Store\Entities\Store.
-    *
+ * App\Module\Store\Entities\Store.
+ *
  * @OA\Schema(
  *      schema="Store",
  *      required={},
@@ -40,14 +40,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          description="Optional shipping cost",
  *          readOnly=false,
  *          nullable=true,
- *          type="double",
+ *          type="number",
  *      ),
  *      @OA\Property(
- *          property="vat_cost",
+ *          property="vat_percentage",
  *          description="Optional VAT on store product",
  *          readOnly=false,
  *          nullable=true,
- *          type="double",
+ *          type="number",
  *      ),
 
  *      @OA\Property(
@@ -67,7 +67,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="date-time"
  *      )
  * ),
-*      @OA\Property(
+ *      @OA\Property(
  *          property="updated_at",
  *          description="",
  *          readOnly=true,
@@ -76,32 +76,32 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="date-time"
  *      )
  * ))
-	* @property int id
-	* @property string $name
-	* @property int $user_id
-	* @property float|null $shipping_cost
-	* @property float|null $vat_cost
-	* @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property int id
+ * @property string $name
+ * @property int $user_id
+ * @property float|null $shipping_cost
+ * @property float|null $vat_percentage
+ * @property \Illuminate\Support\Carbon|null $deleted_at
 
-	* @property-read User|null $user
+ * @property-read User|null $user
 
 
-    * @property \Illuminate\Support\Carbon $created_at
-    * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
 
-    * @method static \App\Module\Store\Database\Factories\StoreFactory factory(...$parameters)
+ * @method static \App\Module\Store\Database\Factories\StoreFactory factory(...$parameters)
 
-    * @method static Store|null find(integer $id = null)
-    * @method static \Illuminate\Database\Eloquent\Builder|Store newModelQuery()
-    * @method static \Illuminate\Database\Eloquent\Builder|Store newQuery()
-    * @method static \Illuminate\Database\Eloquent\Builder|Store query()
+ * @method static Store|null find(integer $id = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|Store newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Store newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Store query()
 
-    * @method static \Illuminate\Database\Query\Builder|Store onlyTrashed()
-    * @method static \Illuminate\Database\Query\Builder|Store withTrashed()
-    * @method static \Illuminate\Database\Query\Builder|Store withoutTrashed()
-    * @mixin \Eloquent
-    */
-class Store extends Model 
+ * @method static \Illuminate\Database\Query\Builder|Store onlyTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Store withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Store withoutTrashed()
+ * @mixin \Eloquent
+ */
+class Store extends Model
 {
     use HasFactory,SoftDeletes;
     /**
@@ -143,10 +143,10 @@ class Store extends Model
      * @var array
      */
     protected $fillable = [
-    'name',
-	'user_id',
-	'shipping_cost',
-	'vat_cost'
+        'name',
+        'user_id',
+        'shipping_cost',
+        'vat_cost'
     ];
 
     /**
@@ -155,37 +155,37 @@ class Store extends Model
      * @var array
      */
     protected $casts = [
-    	'user_id' =>'integer',
-	'shipping_cost' =>'float',
-	'vat_cost' =>'float',
+        'user_id' =>'integer',
+        'shipping_cost' =>'float',
+        'vat_percentage' =>'float',
 
     ];
 
 
     public $translatable = [
-    
+
     ];
 
     public static $allowedFilters = [
-    'name',
-	'user_id',
-	'shipping_cost',
-	'vat_cost'
+        'name',
+        'user_id',
+        'shipping_cost',
+        'vat_percentage'
     ];
 
     public static $allowedFilersExact= [
-    'id',
+        'id',
     ];
 
     public static $allowedFilersScope= [
-    'date_starts_before',
-    'date_ends_before',
-    'date_in_between',
-    'by_date',
+        'date_starts_before',
+        'date_ends_before',
+        'date_in_between',
+        'by_date',
     ];
 
     public static $includes = [
-    'user'
+        'user'
     ];
 
     /**
@@ -195,19 +195,19 @@ class Store extends Model
      */
     protected $table = "stores";
 
-   /**
-    * Create a new factory instance for the model.
-    *
-    * @return \Illuminate\Database\Eloquent\Factories\Factory
-    */
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
     protected static function newFactory(){
-       return StoreFactory::new();
+        return StoreFactory::new();
     }
 
-	//<editor-fold desc="Store Relations" defaultstate="collapsed">
-	public function user():BelongsTo
-	{
-		return $this->belongsTo(User::class);
-	}
-	//</editor-fold>
+    //<editor-fold desc="Store Relations" defaultstate="collapsed">
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+    //</editor-fold>
 }

@@ -14,17 +14,18 @@ class CreateCartItemsTable extends Migration
     public function up()
     {
         Schema::create('cart_items', function (Blueprint $table) {
-            
+
 
 			$table->id();
 			$table->unsignedInteger('cart_id')->comment('Cart id');
 			$table->unsignedInteger('product_id')->comment('Product id');
-			$table->timestamps();
+            $table->integer('quantity')->default(1);
+            $table->timestamps();
 
 			$table->softDeletes();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
