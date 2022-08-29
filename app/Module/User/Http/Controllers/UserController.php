@@ -196,7 +196,7 @@ class UserController extends Controller
      *          name="id",
      *          description="id of User",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -271,7 +271,7 @@ class UserController extends Controller
      *          name="id",
      *          description="id of User",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -345,7 +345,7 @@ class UserController extends Controller
      *          name="id",
      *          description="id of User",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"

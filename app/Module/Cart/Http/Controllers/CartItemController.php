@@ -212,7 +212,7 @@ class CartItemController extends Controller
      *          name="id",
      *          description="id of CartItem",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -291,7 +291,7 @@ class CartItemController extends Controller
      *          name="id",
      *          description="id of CartItem",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -365,7 +365,7 @@ class CartItemController extends Controller
      *          name="id",
      *          description="id of CartItem",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"

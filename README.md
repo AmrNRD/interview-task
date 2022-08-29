@@ -11,11 +11,11 @@
 
 This project was generated successfully using HydrogenSAAS
 
-#### Documentation
+### Documentation
 To open swagger documentation open 
 `/api/documentation`
 
-### Task 
+#### Task 
 Create a Laravel API E-Commerce project to achieve these requirements:
 1. Merchants can create their store.
 2. Merchants can decide if the VAT is included in the product's price or should be
@@ -32,7 +32,7 @@ same prices.
 - Store shipping cost.
 
 
-### Steps to list the cart
+#### Steps to list the cart
 
     -  Signup new user
     -  Create new store 
@@ -45,3 +45,4 @@ same prices.
         - by default user_id is Authed user id.
     -  Create new cart item
         - by default quantity is 1.        
+    -  Get Cart "/api/carts/{id}"

@@ -200,7 +200,7 @@ class ProductController extends Controller
      *          name="id",
      *          description="id of Product",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -277,7 +277,7 @@ class ProductController extends Controller
      *          name="id",
      *          description="id of Product",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -351,7 +351,7 @@ class ProductController extends Controller
      *          name="id",
      *          description="id of Product",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"

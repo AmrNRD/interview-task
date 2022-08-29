@@ -199,7 +199,7 @@ class UserDeviceController extends Controller
      *          name="id",
      *          description="id of UserDevice",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -276,7 +276,7 @@ class UserDeviceController extends Controller
      *          name="id",
      *          description="id of UserDevice",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
@@ -350,7 +350,7 @@ class UserDeviceController extends Controller
      *          name="id",
      *          description="id of UserDevice",
      *           @OA\Schema(
-     *             type="{{ID_TYPE}}"
+     *             type="number"
      *          ),
      *          required=true,
      *          in="path"
