@@ -3,7 +3,6 @@
 namespace App\Module\Cart\Entities;
 
 use App\Infrastructure\AbstractModels\BaseModel as Model;
-use App\Module\Cart\Entities\Cart;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Module\Cart\Database\Factories\CartItemFactory;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -33,6 +32,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      @OA\Property(
  *          property="product_id",
  *          description="Product id",
+ *          readOnly=false,
+ *          nullable=false,
+ *          type="integer",
+ *      ),
+ *      @OA\Property(
+ *          property="quantity",
+ *          description="Quantity of items",
  *          readOnly=false,
  *          nullable=false,
  *          type="integer",
@@ -72,6 +78,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
  * @property-read Cart|null $cart
  * @property-read Product|null $product
+
+ * @property float $vat
+ * @property float $sub_total
+ * @property float $total
 
 
  * @property \Illuminate\Support\Carbon $created_at
@@ -200,4 +210,18 @@ class CartItem extends Model
     }
     //</editor-fold>
 
+    //<editor-fold desc="CartItem Attributes" defaultstate="collapsed">
+    public function getVatAttribute()
+    {
+        return (($this->product->vat_percentage*$this->product->price)*$this->quantity)/100;
+    }
+    public function getSubTotalAttribute()
+    {
+        return ($this->product->price*$this->quantity);
+    }
+    public function getTotalAttribute()
+    {
+        return $this->sub_total+$this->vat;
+    }
+    //</editor-fold>
 }

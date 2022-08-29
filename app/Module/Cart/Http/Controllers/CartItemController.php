@@ -52,7 +52,7 @@ class CartItemController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/cart-items",
+     *      path="/cart-items?include=cart,product",
      *      summary="getCartItemList",
      *      tags={"CartItem"},
      *      description="Get all CartItem",
@@ -86,25 +86,25 @@ class CartItemController extends Controller
     public function index(Request $request){
 
         $index = QueryBuilder::for(CartItem::class)
-                    ->allowedFilters(CartItem::getFilters())
-					->allowedIncludes(CartItem::$includes);
-		    if($request->has('page')){
-		        $index=$index->paginate();
-		    }else{
-		    	$index=$index->get();
-		    }
+            ->allowedFilters(CartItem::getFilters())
+            ->allowedIncludes(CartItem::$includes);
+        if($request->has('page')){
+            $index=$index->paginate();
+        }else{
+            $index=$index->get();
+        }
         $prams=[
             "data"=>[
-            "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
-            "cartItems"=>CartItemResource::Collection($index)
+                "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
+                "cartItems"=>CartItemResource::Collection($index)
             ],
             "view"=>"{$this->moduleAlias}::{$this->viewPath}.index"
         ];
 
-	    if($request->has('page')){
-		     $prams['currentPage']=$index->currentPage();
-		     $prams['total']=$index->lastPage();
-		}
+        if($request->has('page')){
+            $prams['currentPage']=$index->currentPage();
+            $prams['total']=$index->lastPage();
+        }
 
         return $this->response($prams);
     }
@@ -117,13 +117,13 @@ class CartItemController extends Controller
      */
     public function create(){
 
-		$carts= Cart::all();
+        $carts= Cart::all();
 
-		$products= Product::all();
+        $products= Product::all();
 
         $prams=[
             "data"=>["title"=> __('main.add') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
-            'carts'=> $carts,'products'=> $products,],
+                'carts'=> $carts,'products'=> $products,],
             "view"=>"{$this->moduleAlias}::{$this->viewPath}.create"
         ];
         return $this->response($prams);
@@ -168,25 +168,35 @@ class CartItemController extends Controller
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function store(CartItemStoreFormRequest $request){
-        $store = CartItem::create($request->validated());
+        $data=$request->validated();
+        //Check if product already exists in this cart
+        $cart_item=CartItem::where('cart_id',$data['cart_id'])->where('product_id',$data['product_id'])->first();
 
-        if($store){
+        if($cart_item){
+            //Add the quantity to existing to cart item
+            $cart_item->quantity=$cart_item->quantity+$data['quantity'];
+            $cart_item->save();
+        }else{
+            $cart_item = CartItem::create($data);
+        }
 
-        $prams=[
-            "data"=>[
-            "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
-            "cartItem"=>new CartItemResource($store)
-            ],
-            "redirectTo"=>["route"=>"{$this->resourceRoute}.show","args"=>[$store->id]]
-        ];
+        if($cart_item){
+
+            $prams=[
+                "data"=>[
+                    "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
+                    "cartItem"=>new CartItemResource($cart_item)
+                ],
+                "redirectTo"=>["route"=>"{$this->resourceRoute}.show","args"=>[$cart_item->id]]
+            ];
 
         }else{
 
-        $prams=[
-            "data"=>["message"=>"Create failed"],
-            "response_code"=>422,
-            "redirectBack"=>true
-        ];
+            $prams=[
+                "data"=>["message"=>"Create failed"],
+                "response_code"=>422,
+                "redirectBack"=>true
+            ];
 
         }
         return $this->response($prams);
@@ -238,8 +248,8 @@ class CartItemController extends Controller
     public function show(CartItem $cartItem){
         $prams=[
             "data"=>[
-            "title"=>  __('main.show') . ' ' .  __('main.CartItem') . ' : ' . $cartItem->id,
-            "alias"=>$this->moduleAlias,"cartItem"=>new CartItemResource($cartItem)
+                "title"=>  __('main.show') . ' ' .  __('main.CartItem') . ' : ' . $cartItem->id,
+                "alias"=>$this->moduleAlias,"cartItem"=>new CartItemResource($cartItem)
             ],
             "view"=>"{$this->moduleAlias}::{$this->viewPath}.show"
         ];
@@ -255,16 +265,16 @@ class CartItemController extends Controller
      */
     public function edit(CartItem  $cartItem){
 
-		$carts= Cart::all();
+        $carts= Cart::all();
 
-		$products= Product::all();
+        $products= Product::all();
 
 
         $prams=[
             "data"=>[
-            "title"=> __('main.edit') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
-            "cartItem"=>new CartItemResource($cartItem),
-            'carts'=> $carts,'products'=> $products,
+                "title"=> __('main.edit') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
+                "cartItem"=>new CartItemResource($cartItem),
+                'carts'=> $carts,'products'=> $products,
             ],
             "view"=>"{$this->moduleAlias}::{$this->viewPath}.create"
         ];
@@ -324,21 +334,21 @@ class CartItemController extends Controller
 
         if($update){
 
-        $prams=[
-            "data"=>[
-            "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
-            "cartItem"=>new CartItemResource($cartItem)
-            ],
-            "redirectTo"=>["route"=>"{$this->resourceRoute}.show","args"=>[$cartItem->id]]
-        ];
+            $prams=[
+                "data"=>[
+                    "title"=> __('main.show-all') . ' ' . __('main.CartItem'),"alias"=>$this->moduleAlias,
+                    "cartItem"=>new CartItemResource($cartItem)
+                ],
+                "redirectTo"=>["route"=>"{$this->resourceRoute}.show","args"=>[$cartItem->id]]
+            ];
 
         }else{
 
-        $prams=[
-            "data"=>["message"=>"Update failed"],
-            "response_code"=>422,
-            "redirectBack"=>true
-        ];
+            $prams=[
+                "data"=>["message"=>"Update failed"],
+                "response_code"=>422,
+                "redirectBack"=>true
+            ];
 
         }
 
@@ -390,17 +400,17 @@ class CartItemController extends Controller
         $delete = CartItem::whereIn('id',$ids)->delete();
 
         if($delete){
-        $prams=[
-            "data"=>["message"=>"Deleted Successfully"],
-            "response_code"=>200,
-            "redirectBack"=>true
-         ];
+            $prams=[
+                "data"=>["message"=>"Deleted Successfully"],
+                "response_code"=>200,
+                "redirectBack"=>true
+            ];
         }else{
-        $prams=[
-            "data"=>["message"=>"Delete failed"],
-            "response_code"=>422,
-            "redirectBack"=>true
-         ];
+            $prams=[
+                "data"=>["message"=>"Delete failed"],
+                "response_code"=>422,
+                "redirectBack"=>true
+            ];
         }
 
         return $this->response($prams);

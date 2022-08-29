@@ -18,11 +18,14 @@ class CartItemResource extends JsonResource
     public function data(Request $request):array
     {
         return [
-            
+
 			'id'  =>  $this->id,
 			'cart_id'  =>  $this->cart_id,
 			'product_id'  =>  $this->product_id,
-			'cart'  =>  $this->when($this->relationLoaded('cart'),function (){ return new CartResource($this->cart);}),
+			'quantity'  =>  $this->quantity,
+            'vat'  =>  $this->vat,
+            'total'  =>  $this->total,
+            'cart'  =>  $this->when($this->relationLoaded('cart'),function (){ return new CartResource($this->cart);}),
 			'product'  =>  $this->when($this->relationLoaded('product'),function (){ return new ProductResource($this->product);}),
         ];
     }
